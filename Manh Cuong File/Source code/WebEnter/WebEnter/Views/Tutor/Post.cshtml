@@ -1,0 +1,29 @@
+﻿@model WebEnter.Models.Report
+@{
+    ViewBag.Title = "Post";
+}
+
+<h2>Post</h2>
+@using (Html.BeginForm("Post", "Tutor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label>Meeting</label>
+        @Html.TextBoxFor(model => model.Meeting, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Comments</label>
+        @Html.TextAreaFor(model => model.Comments, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Student</label>
+        @Html.DropDownList("StudentId", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Image</label>
+        <input type="file" name="UpImage" class="form-control" />
+        @Html.HiddenFor(m => m.Documents)
+    </div>
+    <div class="form-group">
+        <button class="btn btn-danger">Submit</button>
+    </div>
+}

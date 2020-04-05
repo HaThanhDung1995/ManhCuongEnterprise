@@ -1,0 +1,99 @@
+﻿@using WebEnter.Utils
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Tutor
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+
+
+                            @if (XSession.Tutor != null)
+                            {
+                                <li><a href="/Tutor/Logout">Logout</a></li>
+                                <li><a href="/Tutor/Post">Tutor Post</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Tutor/Login">Login</a></li>
+                                <li><a href="/Tutor/Register">Register</a></li>
+                            }
+
+                        </ul>
+                    </li>
+                   
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Student
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="/Student/Register">Register</a></li>
+                            <li><a href="/Student/FeedBack">Student Interaction</a></li>
+                            @if (XSession.Student != null)
+                            {
+                                <li><a href="/Student/Logout">Logout</a></li>
+                            }
+                            
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Manager
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            @if (XSession.Master != null)
+                            {
+                                <li><a href="/Manager/Logout">Logout</a></li>
+
+                            }
+
+                            <li><a href="/Manager/ManagerStudent">Student Information</a></li>
+                            <li><a href="/Manager/Index">Arrangement</a></li>
+                            <li><a href="/Manager/ManagerPost">ManagerPost</a></li>
+                            <li><a href="/Manager/ManagerFeedback">ManagerFeedback</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

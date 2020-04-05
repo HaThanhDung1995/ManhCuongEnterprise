@@ -1,0 +1,26 @@
+﻿@using WebEnter.Models
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label>Student</label>
+        @foreach (var item in ViewBag.StudentId as List<Student>)
+        {
+            <input type="checkbox" name="StudentId" value="@item.Id"/> @item.Fullname
+        }
+    </div>
+    
+    <div class="form-group">
+        <label>Tutor</label>
+        @Html.DropDownList("TutorId", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <button class="btn btn-danger">Submit</button>
+    </div>
+}
+

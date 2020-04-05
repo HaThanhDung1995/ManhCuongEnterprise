@@ -1,0 +1,25 @@
+﻿@using WebEnter.Models
+<div class="panel panel-success">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+           
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var Item in ViewBag.Items as List<Student>)
+        {
+            <tr>
+                <td>@Item.Id</td>
+                <td>@Item.Fullname</td>
+                <td>@Item.Email</td>
+                
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
